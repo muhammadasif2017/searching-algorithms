@@ -183,6 +183,51 @@ class BinarySearchTree {
 
     return this.breadthFisrtSearchRecursive(queue, list);
   }
+
+  DfsInOrder() {
+    return traverseInOrder(this.root, []);
+  }
+
+  DfsPreOrder() {
+    return traversePreOrder(this.root, []);
+  }
+
+  DfsPostOrder() {
+    return traversePostOrder(this.root, []);
+  }
+}
+
+function traverseInOrder(node, list) {
+  if (node.left) {
+    traverseInOrder(node.left, list);
+  }
+  list.push(node.value);
+  if (node.right) {
+    traverseInOrder(node.right, list);
+  }
+  return list;
+}
+
+function traversePreOrder(node, list) {
+  list.push(node.value);
+  if (node.left) {
+    traversePreOrder(node.left, list);
+  }
+  if (node.right) {
+    traversePreOrder(node.right, list);
+  }
+  return list;
+}
+
+function traversePostOrder(node, list) {
+  if (node.left) {
+    traversePostOrder(node.left, list);
+  }
+  if (node.right) {
+    traversePostOrder(node.right, list);
+  }
+  list.push(node.value);
+  return list;
 }
 
 const myBinarySearchTree = new BinarySearchTree();
